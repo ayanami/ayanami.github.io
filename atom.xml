@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[NO PROGRAM NO LIFE]]></title>
+  <title><![CDATA[NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-03-29T00:33:58+09:00</updated>
+  <updated>2014-03-29T03:16:58+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Hoge]]></title>
-    <link href="http://ayanami.github.io/blog/objective-c/hoge/"/>
+    <link href="http://ayanami.github.io/blog/Fuga/hoge/"/>
     <updated>2014-03-28T20:42:38+09:00</updated>
-    <id>http://ayanami.github.io/blog/objective-c/hoge</id>
+    <id>http://ayanami.github.io/blog/Fuga/hoge</id>
     <content type="html"><![CDATA[
 ]]></content>
   </entry>
