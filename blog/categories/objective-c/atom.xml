@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[NO PROGRAM NO LIFE]]></title>
-  <link href="http://ayanami.github.io/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Objective-c | NO PROGRAM NO LIFE]]></title>
+  <link href="http://ayanami.github.io/blog/categories/objective-c/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
   <updated>2014-03-29T00:33:58+09:00</updated>
   <id>http://ayanami.github.io/</id>
