@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Objective-C | NO プログラム NO LIFE]]></title>
+  <link href="http://ayanami.github.io/blog/categories/objective-c/atom.xml" rel="self"/>
+  <link href="http://ayanami.github.io/"/>
+  <updated>2014-03-29T16:48:06+09:00</updated>
+  <id>http://ayanami.github.io/</id>
+  <author>
+    <name><![CDATA[Yoshimasa.Suzuki]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[[Objective-C]数値判定]]></title>
+    <link href="http://ayanami.github.io/blog/Objective-C/hoge/"/>
+    <updated>2014-03-28T20:42:38+09:00</updated>
+    <id>http://ayanami.github.io/blog/Objective-C/hoge</id>
+    <content type="html"><![CDATA[<p>Objective-Cでの数値判定方法はいくつかあるみたいだけど、<code>NSCharacterSet</code>を利用した方法が一番しっくりきた。
+<code>@"0123456789"</code>が、引数のスーパーセットかを判定した結果を返す。
+```
++ (BOOL)isNumber:(NSString *)text {</p>
+
+<pre><code>NSCharacterSet *numbers = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+NSCharacterSet *target = [NSCharacterSet characterSetWithCharactersInString:text];
+return [numbers isSupersetOfSet:target];
+</code></pre>
+
+<p>}
+```</p>
+
+<p>ちなみに、Javaではこんな感じ。
+引数が、正規表現<code>"^[0-9]+$"</code>にマッチしているかを判定した結果を返す。
+考え方が逆ですね。
+```
+public boolean isNumber(String text) {</p>
+
+<pre><code>Pattern pattern = Pattern.compile("^[0-9]+$");
+return pattern.matcher(text).find();
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Objective-Cは好きだけど、Javaと比べるとメソッド名が長い。。。</p>
+]]></content>
+  </entry>
+  
+</feed>

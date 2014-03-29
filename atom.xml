@@ -4,7 +4,7 @@
   <title><![CDATA[NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-03-29T03:16:58+09:00</updated>
+  <updated>2014-03-29T16:48:06+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -14,11 +14,40 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Hoge]]></title>
-    <link href="http://ayanami.github.io/blog/Fuga/hoge/"/>
+    <title type="html"><![CDATA[[Objective-C]数値判定]]></title>
+    <link href="http://ayanami.github.io/blog/Objective-C/hoge/"/>
     <updated>2014-03-28T20:42:38+09:00</updated>
-    <id>http://ayanami.github.io/blog/Fuga/hoge</id>
-    <content type="html"><![CDATA[
+    <id>http://ayanami.github.io/blog/Objective-C/hoge</id>
+    <content type="html"><![CDATA[<p>Objective-Cでの数値判定方法はいくつかあるみたいだけど、<code>NSCharacterSet</code>を利用した方法が一番しっくりきた。
+<code>@"0123456789"</code>が、引数のスーパーセットかを判定した結果を返す。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>+ (BOOL)isNumber:(NSString *)text {
+</span><span class='line'>    NSCharacterSet *numbers = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+</span><span class='line'>    NSCharacterSet *target = [NSCharacterSet characterSetWithCharactersInString:text];
+</span><span class='line'>    return [numbers isSupersetOfSet:target];
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ちなみに、Javaではこんな感じ。
+引数が、正規表現<code>"^[0-9]+$"</code>にマッチしているかを判定した結果を返す。
+考え方が逆ですね。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>public boolean isNumber(String text) {
+</span><span class='line'>    Pattern pattern = Pattern.compile("^[0-9]+$");
+</span><span class='line'>    return pattern.matcher(text).find();
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Objective-Cは好きだけど、Javaと比べるとメソッド名が長い。。。</p>
 ]]></content>
   </entry>
   
