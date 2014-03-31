@@ -4,7 +4,7 @@
   <title><![CDATA[NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-03-31T13:43:58+09:00</updated>
+  <updated>2014-03-31T14:17:22+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -26,7 +26,7 @@
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>+ (BOOL)isNumber:(NSString *)text {
+</pre></td><td class='code'><pre><code class=''><span class='line'>+ (BOOL)isNumeric:(NSString *)text {
 </span><span class='line'>    NSCharacterSet *numbers = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
 </span><span class='line'>    NSCharacterSet *target = [NSCharacterSet characterSetWithCharactersInString:text];
 </span><span class='line'>    return [numbers isSupersetOfSet:target];
@@ -41,7 +41,7 @@
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>public boolean isNumber(String text) {
+</pre></td><td class='code'><pre><code class=''><span class='line'>public boolean isNumeric(String text) {
 </span><span class='line'>    Pattern pattern = Pattern.compile("^[0-9]+$");
 </span><span class='line'>    return pattern.matcher(text).find();
 </span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
