@@ -84,7 +84,7 @@
   
 
 
-<time datetime="2014-04-25T18:57:32+09:00" pubdate data-updated="true">Apr 25<span>th</span>, 2014</time>
+<time datetime="2014-04-07T18:57:32+09:00" pubdate data-updated="true">Apr 7<span>th</span>, 2014</time>
         
       </p>
     
@@ -113,45 +113,7 @@
 </span><span class='line'>[array sortedArrayUsingDescriptors:[NSArray arrayWithObject:desc]];</span></code></pre></td></tr></table></div></figure>
 
 
-<p>ちなみに、Javaではこんな感じ。以下は<code>list</code>の要素が<code>java.lang.Comparable</code>を実装している場合。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Collections.sort(list);</span></code></pre></td></tr></table></div></figure>
-
-
-<p><code>list</code>の要素が以下の様なメンバを持つオブジェクトである場合。
-面倒なので、getter、setterは省略。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>public class Hoge {
-</span><span class='line'>    private int foo;
-</span><span class='line'>    private String bar;
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<p><code>bar</code>の昇順でソート。<code>java.util.Comparator</code>実装クラスが必要になる。
-まずは、実装クラスを作って・・・</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>public class Fuga implements Comparator&lt;Hoge&gt; {
-</span><span class='line'>    public int compare(Hoge o1, Hoge o2) {
-</span><span class='line'>        return o1.bar.compareTo(o2.bar);
-</span><span class='line'>    }
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>比較処理を実行。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Arrays.sort(list.toArray(), new Fuga());</span></code></pre></td></tr></table></div></figure>
-
+<p>ちなみに、Javaでは<a href="http://ayanami.github.io/blog/java/array-sort-java/">こんな感じ</a>。</p>
 
 <p>Objective-Cの方が楽だなー。</p>
 </div>
@@ -176,7 +138,7 @@
   
 
 
-<time datetime="2014-04-25T18:57:32+09:00" pubdate data-updated="true">Apr 25<span>th</span>, 2014</time>
+<time datetime="2014-04-07T18:57:32+09:00" pubdate data-updated="true">Apr 7<span>th</span>, 2014</time>
       
 
 <span class="categories">
@@ -210,7 +172,7 @@
         <a class="basic-alignment left" href="/blog/objective-c/is-numeric-objc/" title="Previous Post: [Objective-C]数値判定">&laquo; [Objective-C]数値判定</a>
       
       
-        <a class="basic-alignment right" href="/blog/array-sort-java/" title="Next Post: hoge">hoge &raquo;</a>
+        <a class="basic-alignment right" href="/blog/java/array-sort-java/" title="Next Post: [Java]リストソート">[Java]リストソート &raquo;</a>
       
     </p>
   </footer>
@@ -229,7 +191,7 @@
       </li>
     
       <li class="post">
-        <a href="/blog/array-sort-java/">Hoge</a>
+        <a href="/blog/java/array-sort-java/">[Java]リストソート</a>
       </li>
     
       <li class="post">
@@ -244,7 +206,7 @@
 </section>
 <section>
   <h1>Categories</h1>
-  <ul id="category-list"><li><a href='/blog/categories/java/'>java (1)</a></li><li><a href='/blog/categories/objective-c/'>objective-c (2)</a></li></ul>
+  <ul id="category-list"><li><a href='/blog/categories/java/'>java (2)</a></li><li><a href='/blog/categories/objective-c/'>objective-c (2)</a></li></ul>
 </section>
 
 

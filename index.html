@@ -125,7 +125,7 @@ public static boolean isNumeric(String text) { Pattern pattern = Pattern.compile
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/array-sort-java/">Hoge</a></h1>
+      <h1 class="entry-title"><a href="/blog/java/array-sort-java/">[Java]リストソート</a></h1>
     
     
       <p class="meta">
@@ -141,72 +141,14 @@ public static boolean isNumeric(String text) { Pattern pattern = Pattern.compile
   
 
 
-<time datetime="2014-04-25T20:34:01+09:00" pubdate data-updated="true">Apr 25<span>th</span>, 2014</time>
+<time datetime="2014-04-11T20:34:01+09:00" pubdate data-updated="true">Apr 11<span>th</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content">
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/objective-c/array-sort-objc/">[Objective-C]配列ソート</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-25T18:57:32+09:00" pubdate data-updated="true">Apr 25<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>要素が<code>NSString</code>である<code>NSArray</code>のソート方法。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[array sortedArrayUsingSelector:@selector(compare:)];</span></code></pre></td></tr></table></div></figure>
-
-
-<p>要素が以下の様なプロパティを持つオブジェクトである<code>NSArray</code>のソート方法。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>@property (nonatomic) NSUInteger hoge;
-</span><span class='line'>@property (nonatomic) NSString *fuga;</span></code></pre></td></tr></table></div></figure>
-
-
-<p><code>fuga</code>の昇順でソート。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>NSSortDescriptor *desc = [NSSortDescriptor sortDescriptorWithKey:@"fuga" ascending:YES];
-</span><span class='line'>[array sortedArrayUsingDescriptors:[NSArray arrayWithObject:desc]];</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ちなみに、Javaではこんな感じ。以下は<code>list</code>の要素が<code>java.lang.Comparable</code>を実装している場合。</p>
+  <div class="entry-content"><p><code>list</code>の要素が<code>java.lang.Comparable</code>を実装している場合。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>Collections.sort(list);</span></code></pre></td></tr></table></div></figure>
@@ -245,6 +187,66 @@ public static boolean isNumeric(String text) { Pattern pattern = Pattern.compile
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>Arrays.sort(list.toArray(), new Fuga());</span></code></pre></td></tr></table></div></figure>
 
+
+<p>ちなみに、Objective-Cでは<a href="http://ayanami.github.io/blog/objective-c/array-sort-objc/">こんな感じ</a>。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/objective-c/array-sort-objc/">[Objective-C]配列ソート</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-07T18:57:32+09:00" pubdate data-updated="true">Apr 7<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>要素が<code>NSString</code>である<code>NSArray</code>のソート方法。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[array sortedArrayUsingSelector:@selector(compare:)];</span></code></pre></td></tr></table></div></figure>
+
+
+<p>要素が以下の様なプロパティを持つオブジェクトである<code>NSArray</code>のソート方法。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>@property (nonatomic) NSUInteger hoge;
+</span><span class='line'>@property (nonatomic) NSString *fuga;</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>fuga</code>の昇順でソート。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>NSSortDescriptor *desc = [NSSortDescriptor sortDescriptorWithKey:@"fuga" ascending:YES];
+</span><span class='line'>[array sortedArrayUsingDescriptors:[NSArray arrayWithObject:desc]];</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ちなみに、Javaでは<a href="http://ayanami.github.io/blog/java/array-sort-java/">こんな感じ</a>。</p>
 
 <p>Objective-Cの方が楽だなー。</p>
 </div>
@@ -324,7 +326,7 @@ public static boolean isNumeric(String text) { Pattern pattern = Pattern.compile
       </li>
     
       <li class="post">
-        <a href="/blog/array-sort-java/">Hoge</a>
+        <a href="/blog/java/array-sort-java/">[Java]リストソート</a>
       </li>
     
       <li class="post">
@@ -339,7 +341,7 @@ public static boolean isNumeric(String text) { Pattern pattern = Pattern.compile
 </section>
 <section>
   <h1>Categories</h1>
-  <ul id="category-list"><li><a href='/blog/categories/java/'>java (1)</a></li><li><a href='/blog/categories/objective-c/'>objective-c (2)</a></li></ul>
+  <ul id="category-list"><li><a href='/blog/categories/java/'>java (2)</a></li><li><a href='/blog/categories/objective-c/'>objective-c (2)</a></li></ul>
 </section>
 
 
