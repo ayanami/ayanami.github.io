@@ -9,10 +9,12 @@
   <meta name="author" content="Yoshimasa.Suzuki">
 
   
-  <meta name="description" content="要素がNSStringであるNSArrayのソート方法。 1
-[array sortedArrayUsingSelector:@selector(compare:)]; 要素が以下の様なプロパティを持つオブジェクトであるNSArrayのソート方法。 1
+  <meta name="description" content="Javaにおける数値判定。
+引数が、正規表現"^[0-9]+$"にマッチしているかを判定した結果を返す。 1
 2
-@property (nonatomic &hellip;">
+3
+4
+public static boolean isNumeric(String text) { Pattern pattern = Pattern.compile("^[0-9 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,7 +76,92 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/objective-c/array-sort/">[Objective-C]配列ソート</a></h1>
+      <h1 class="entry-title"><a href="/blog/java/is-numeric-java/">[Java]数値判定</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-25T20:34:07+09:00" pubdate data-updated="true">Apr 25<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Javaにおける数値判定。
+引数が、正規表現<code>"^[0-9]+$"</code>にマッチしているかを判定した結果を返す。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>public static boolean isNumeric(String text) {
+</span><span class='line'>    Pattern pattern = Pattern.compile("^[0-9]+$");
+</span><span class='line'>    return pattern.matcher(text).find();
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ちなみにObjective-Cでは<a href="http://ayanami.github.io/blog/objective-c/is-numeric-objc/">こんな感じ</a>。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/array-sort-java/">Hoge</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-25T20:34:01+09:00" pubdate data-updated="true">Apr 25<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/objective-c/array-sort-objc/">[Objective-C]配列ソート</a></h1>
     
     
       <p class="meta">
@@ -172,7 +259,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/objective-c/is-numeric/">[Objective-C]数値判定</a></h1>
+      <h1 class="entry-title"><a href="/blog/objective-c/is-numeric-objc/">[Objective-C]数値判定</a></h1>
     
     
       <p class="meta">
@@ -210,19 +297,7 @@
 </span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
 
-<p>ちなみに、Javaではこんな感じ。
-引数が、正規表現<code>"^[0-9]+$"</code>にマッチしているかを判定した結果を返す。
-考え方が逆ですね。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>public static boolean isNumeric(String text) {
-</span><span class='line'>    Pattern pattern = Pattern.compile("^[0-9]+$");
-</span><span class='line'>    return pattern.matcher(text).find();
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
+<p>ちなみに、Javaでは<a href="http://ayanami.github.io/blog/java/is-numeric-java/">こんな感じ</a>。</p>
 
 <p>Objective-Cは好きだけど、Javaと比べるとメソッド名が長い。。。</p>
 </div>
@@ -245,18 +320,26 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/objective-c/array-sort/">[Objective-C]配列ソート</a>
+        <a href="/blog/java/is-numeric-java/">[Java]数値判定</a>
       </li>
     
       <li class="post">
-        <a href="/blog/objective-c/is-numeric/">[Objective-C]数値判定</a>
+        <a href="/blog/array-sort-java/">Hoge</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/objective-c/array-sort-objc/">[Objective-C]配列ソート</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/objective-c/is-numeric-objc/">[Objective-C]数値判定</a>
       </li>
     
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-  <ul id="category-list"><li><a href='/blog/categories/objective-c/'>objective-c (2)</a></li></ul>
+  <ul id="category-list"><li><a href='/blog/categories/java/'>java (1)</a></li><li><a href='/blog/categories/objective-c/'>objective-c (2)</a></li></ul>
 </section>
 
 

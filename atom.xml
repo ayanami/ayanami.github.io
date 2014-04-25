@@ -4,7 +4,7 @@
   <title><![CDATA[NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-04-25T20:19:06+09:00</updated>
+  <updated>2014-04-25T20:48:21+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -14,10 +14,41 @@
 
   
   <entry>
+    <title type="html"><![CDATA[[Java]数値判定]]></title>
+    <link href="http://ayanami.github.io/blog/java/is-numeric-java/"/>
+    <updated>2014-04-25T20:34:07+09:00</updated>
+    <id>http://ayanami.github.io/blog/java/is-numeric-java</id>
+    <content type="html"><![CDATA[<p>Javaにおける数値判定。
+引数が、正規表現<code>"^[0-9]+$"</code>にマッチしているかを判定した結果を返す。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>public static boolean isNumeric(String text) {
+</span><span class='line'>    Pattern pattern = Pattern.compile("^[0-9]+$");
+</span><span class='line'>    return pattern.matcher(text).find();
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ちなみにObjective-Cでは<a href="http://ayanami.github.io/blog/objective-c/is-numeric-objc/">こんな感じ</a>。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hoge]]></title>
+    <link href="http://ayanami.github.io/blog/array-sort-java/"/>
+    <updated>2014-04-25T20:34:01+09:00</updated>
+    <id>http://ayanami.github.io/blog/array-sort-java</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[[Objective-C]配列ソート]]></title>
-    <link href="http://ayanami.github.io/blog/objective-c/array-sort/"/>
+    <link href="http://ayanami.github.io/blog/objective-c/array-sort-objc/"/>
     <updated>2014-04-25T18:57:32+09:00</updated>
-    <id>http://ayanami.github.io/blog/objective-c/array-sort</id>
+    <id>http://ayanami.github.io/blog/objective-c/array-sort-objc</id>
     <content type="html"><![CDATA[<p>要素が<code>NSString</code>である<code>NSArray</code>のソート方法。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -86,9 +117,9 @@
   
   <entry>
     <title type="html"><![CDATA[[Objective-C]数値判定]]></title>
-    <link href="http://ayanami.github.io/blog/objective-c/is-numeric/"/>
+    <link href="http://ayanami.github.io/blog/objective-c/is-numeric-objc/"/>
     <updated>2014-03-28T20:42:38+09:00</updated>
-    <id>http://ayanami.github.io/blog/objective-c/is-numeric</id>
+    <id>http://ayanami.github.io/blog/objective-c/is-numeric-objc</id>
     <content type="html"><![CDATA[<p>Objective-Cでの数値判定方法はいくつかあるみたいだけど、<code>NSCharacterSet</code>を利用した方法が一番しっくりきた。
 <code>@"0123456789"</code>が、引数のスーパーセットかを判定した結果を返す。</p>
 
@@ -104,19 +135,7 @@
 </span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
 
-<p>ちなみに、Javaではこんな感じ。
-引数が、正規表現<code>"^[0-9]+$"</code>にマッチしているかを判定した結果を返す。
-考え方が逆ですね。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>public static boolean isNumeric(String text) {
-</span><span class='line'>    Pattern pattern = Pattern.compile("^[0-9]+$");
-</span><span class='line'>    return pattern.matcher(text).find();
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
+<p>ちなみに、Javaでは<a href="http://ayanami.github.io/blog/java/is-numeric-java/">こんな感じ</a>。</p>
 
 <p>Objective-Cは好きだけど、Javaと比べるとメソッド名が長い。。。</p>
 ]]></content>
