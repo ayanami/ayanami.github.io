@@ -4,7 +4,7 @@
   <title><![CDATA[NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-03-31T14:17:22+09:00</updated>
+  <updated>2014-04-25T20:19:06+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -12,6 +12,77 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[Objective-C]配列ソート]]></title>
+    <link href="http://ayanami.github.io/blog/objective-c/array-sort/"/>
+    <updated>2014-04-25T18:57:32+09:00</updated>
+    <id>http://ayanami.github.io/blog/objective-c/array-sort</id>
+    <content type="html"><![CDATA[<p>要素が<code>NSString</code>である<code>NSArray</code>のソート方法。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[array sortedArrayUsingSelector:@selector(compare:)];</span></code></pre></td></tr></table></div></figure>
+
+
+<p>要素が以下の様なプロパティを持つオブジェクトである<code>NSArray</code>のソート方法。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>@property (nonatomic) NSUInteger hoge;
+</span><span class='line'>@property (nonatomic) NSString *fuga;</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>fuga</code>の昇順でソート。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>NSSortDescriptor *desc = [NSSortDescriptor sortDescriptorWithKey:@"fuga" ascending:YES];
+</span><span class='line'>[array sortedArrayUsingDescriptors:[NSArray arrayWithObject:desc]];</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ちなみに、Javaではこんな感じ。以下は<code>list</code>の要素が<code>java.lang.Comparable</code>を実装している場合。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Collections.sort(list);</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>list</code>の要素が以下の様なメンバを持つオブジェクトである場合。
+面倒なので、getter、setterは省略。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>public class Hoge {
+</span><span class='line'>    private int foo;
+</span><span class='line'>    private String bar;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>bar</code>の昇順でソート。<code>java.util.Comparator</code>実装クラスが必要になる。
+まずは、実装クラスを作って・・・</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>public class Fuga implements Comparator&lt;Hoge&gt; {
+</span><span class='line'>    public int compare(Hoge o1, Hoge o2) {
+</span><span class='line'>        return o1.bar.compareTo(o2.bar);
+</span><span class='line'>    }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>比較処理を実行。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Arrays.sort(list.toArray(), new Fuga());</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Objective-Cの方が楽だなー。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[Objective-C]数値判定]]></title>
@@ -41,7 +112,7 @@
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>public boolean isNumeric(String text) {
+</pre></td><td class='code'><pre><code class=''><span class='line'>public static boolean isNumeric(String text) {
 </span><span class='line'>    Pattern pattern = Pattern.compile("^[0-9]+$");
 </span><span class='line'>    return pattern.matcher(text).find();
 </span><span class='line'>}</span></code></pre></td></tr></table></div></figure>

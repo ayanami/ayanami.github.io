@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Objective-c | NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/blog/categories/objective-c/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-03-31T14:17:22+09:00</updated>
+  <updated>2014-04-25T20:19:06+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -12,6 +12,66 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[Objective-C]配列ソート]]></title>
+    <link href="http://ayanami.github.io/blog/objective-c/array-sort/"/>
+    <updated>2014-04-25T18:57:32+09:00</updated>
+    <id>http://ayanami.github.io/blog/objective-c/array-sort</id>
+    <content type="html"><![CDATA[<p>要素が<code>NSString</code>である<code>NSArray</code>のソート方法。
+<code>
+[array sortedArrayUsingSelector:@selector(compare:)];
+</code></p>
+
+<p>要素が以下の様なプロパティを持つオブジェクトである<code>NSArray</code>のソート方法。
+<code>
+@property (nonatomic) NSUInteger hoge;
+@property (nonatomic) NSString *fuga;
+</code></p>
+
+<p><code>fuga</code>の昇順でソート。
+<code>
+NSSortDescriptor *desc = [NSSortDescriptor sortDescriptorWithKey:@"fuga" ascending:YES];
+[array sortedArrayUsingDescriptors:[NSArray arrayWithObject:desc]];
+</code></p>
+
+<p>ちなみに、Javaではこんな感じ。以下は<code>list</code>の要素が<code>java.lang.Comparable</code>を実装している場合。
+<code>
+Collections.sort(list);
+</code></p>
+
+<p><code>list</code>の要素が以下の様なメンバを持つオブジェクトである場合。
+面倒なので、getter、setterは省略。
+```
+public class Hoge {</p>
+
+<pre><code>private int foo;
+private String bar;
+</code></pre>
+
+<p>}
+```</p>
+
+<p><code>bar</code>の昇順でソート。<code>java.util.Comparator</code>実装クラスが必要になる。
+まずは、実装クラスを作って・・・
+```
+public class Fuga implements Comparator<Hoge> {</p>
+
+<pre><code>public int compare(Hoge o1, Hoge o2) {
+    return o1.bar.compareTo(o2.bar);
+}
+</code></pre>
+
+<p>}
+<code>
+比較処理を実行。
+</code>
+Arrays.sort(list.toArray(), new Fuga());
+```</p>
+
+<p>Objective-Cの方が楽だなー。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[Objective-C]数値判定]]></title>
@@ -36,7 +96,7 @@ return [numbers isSupersetOfSet:target];
 考え方が逆ですね。</p>
 
 <p>```
-public boolean isNumeric(String text) {</p>
+public static boolean isNumeric(String text) {</p>
 
 <pre><code>Pattern pattern = Pattern.compile("^[0-9]+$");
 return pattern.matcher(text).find();
