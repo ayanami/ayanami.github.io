@@ -9,13 +9,8 @@
   <meta name="author" content="Yoshimasa.Suzuki">
 
   
-  <meta name="description" content="listの要素がjava.lang.Comparableを実装している場合。 1
-Collections.sort(list); listの要素が以下の様なメンバを持つオブジェクトである場合。
-面倒なので、getter、setterは省略。 1
-2
-3
-4
-public class Hoge { &hellip;">
+  <meta name="description" content="Cocoaの[UIControl addTarget:action:forControlEvents:]ではactionに引数を設定することができないので、
+categoryとblocksを利用して、自由に定義したコールバックを渡す。 ファイル名はUIControl+Blocksとする。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,6 +66,97 @@ public class Hoge { &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/objective-c/uicontrol-event-callback/">[Objective-C]UIControlのイベントハンドラに引数を渡す</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-26T01:40:31+09:00" pubdate data-updated="true">Apr 26<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Cocoaの<code>[UIControl addTarget:action:forControlEvents:]</code>では<code>action</code>に引数を設定することができないので、
+<code>category</code>と<code>blocks</code>を利用して、自由に定義したコールバックを渡す。</p>
+
+<p>ファイル名は<code>UIControl+Blocks</code>とする。まずはヘッダファイルを定義。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#import &lt;UIKit/UIKit.h&gt;
+</span><span class='line'>@interface UIControl(Blocks)
+</span><span class='line'>- (void)addTargetWithBlocks:(void (^)())blocks forControlEvents:(UIControlEvents)forControlEvents;
+</span><span class='line'>@end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>次に実装ファイルファイルを定義。<code>category</code>内ではインスタンス変数を保持できないので、関連参照を用いて<code>blocks</code>をストアする。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#import "UIControl+Blocks.h"
+</span><span class='line'>#import &lt;objc/runtime.h&gt;
+</span><span class='line'>@implementation UIControl(Blocks)
+</span><span class='line'>- (void)addTargetWithBlocks:(void (^)())blocks forControlEvents:(UIControlEvents)forControlEvents {
+</span><span class='line'>    objc_setAssociatedObject(self, @"key", blocks, OBJC_ASSOCIATION_COPY);
+</span><span class='line'>    [self addTarget:self action:@selector(callback:) forControlEvents:forControlEvents];
+</span><span class='line'>}
+</span><span class='line'>- (void)callback:(id)sender {
+</span><span class='line'>    void (^blocks)() = objc_getAssociatedObject(self, @"key");
+</span><span class='line'>    if (blocks) {
+</span><span class='line'>        blocks();
+</span><span class='line'>    }
+</span><span class='line'>}
+</span><span class='line'>@end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>後は、任意のクラスでヘッダファイルをインポートすれば、<code>[UIControl addTargetWithBlocks:forControlEvents:]</code>が利用できる。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[btn addTargetWithBlocks:^{
+</span><span class='line'>    NSLog(@"%@", @"hoge");
+</span><span class='line'>} forControlEvents:UIControlEventTouchUpInside];</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -323,6 +409,10 @@ public class Hoge { &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/objective-c/uicontrol-event-callback/">[Objective-C]UIControlのイベントハンドラに引数を渡す</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/java/array-sort-java/">[Java]リストソート</a>
       </li>
     
@@ -342,7 +432,7 @@ public class Hoge { &hellip;">
 </section>
 <section>
   <h1>Categories</h1>
-  <ul id="category-list"><li><a href='/blog/categories/java/'>java (2)</a></li><li><a href='/blog/categories/objective-c/'>objective-c (2)</a></li></ul>
+  <ul id="category-list"><li><a href='/blog/categories/java/'>java (2)</a></li><li><a href='/blog/categories/objective-c/'>objective-c (3)</a></li></ul>
 </section>
 
 

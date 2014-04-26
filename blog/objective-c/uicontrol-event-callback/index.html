@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>[Objective-C]数値判定 - NO プログラム NO LIFE</title>
+  <title>[Objective-C]UIControlのイベントハンドラに引数を渡す - NO プログラム NO LIFE</title>
   <meta name="author" content="Yoshimasa.Suzuki">
 
   
-  <meta name="description" content="Objective-Cにおける数値判定について">
-  <meta name="keywords" content="NO プログラム NO LIFE, Objective-C, 数値判定, NSCharacterSet">
+  <meta name="description" content="UIControlのイベントハンドラに引数を渡す方法について">
+  <meta name="keywords" content="NO プログラム NO LIFE, Objective-C, UIControl, UIControlEvents, callback, blocks">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://ayanami.github.io/blog/objective-c/is-numeric-objc">
+  <link rel="canonical" href="http://ayanami.github.io/blog/objective-c/uicontrol-event-callback">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="NO プログラム NO LIFE" type="application/atom+xml">
@@ -68,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">[Objective-C]数値判定</h1>
+      <h1 class="entry-title">[Objective-C]UIControlのイベントハンドラに引数を渡す</h1>
     
     
       <p class="meta">
@@ -84,31 +84,69 @@
   
 
 
-<time datetime="2014-03-28T20:42:38+09:00" pubdate data-updated="true">Mar 28<span>th</span>, 2014</time>
+<time datetime="2014-04-26T01:40:31+09:00" pubdate data-updated="true">Apr 26<span>th</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Objective-Cでの数値判定方法はいくつかあるみたいだけど、<code>NSCharacterSet</code>を利用した方法が一番しっくりきた。
-<code>@"0123456789"</code>が、引数のスーパーセットかを判定した結果を返す。</p>
+<div class="entry-content"><p>Cocoaの<code>[UIControl addTarget:action:forControlEvents:]</code>では<code>action</code>に引数を設定することができないので、
+<code>category</code>と<code>blocks</code>を利用して、自由に定義したコールバックを渡す。</p>
+
+<p>ファイル名は<code>UIControl+Blocks</code>とする。まずはヘッダファイルを定義。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#import &lt;UIKit/UIKit.h&gt;
+</span><span class='line'>@interface UIControl(Blocks)
+</span><span class='line'>- (void)addTargetWithBlocks:(void (^)())blocks forControlEvents:(UIControlEvents)forControlEvents;
+</span><span class='line'>@end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>次に実装ファイルファイルを定義。<code>category</code>内ではインスタンス変数を保持できないので、関連参照を用いて<code>blocks</code>をストアする。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>+ (BOOL)isNumeric:(NSString *)text {
-</span><span class='line'>    NSCharacterSet *numbers = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
-</span><span class='line'>    NSCharacterSet *target = [NSCharacterSet characterSetWithCharactersInString:text];
-</span><span class='line'>    return [numbers isSupersetOfSet:target];
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#import "UIControl+Blocks.h"
+</span><span class='line'>#import &lt;objc/runtime.h&gt;
+</span><span class='line'>@implementation UIControl(Blocks)
+</span><span class='line'>- (void)addTargetWithBlocks:(void (^)())blocks forControlEvents:(UIControlEvents)forControlEvents {
+</span><span class='line'>    objc_setAssociatedObject(self, @"key", blocks, OBJC_ASSOCIATION_COPY);
+</span><span class='line'>    [self addTarget:self action:@selector(callback:) forControlEvents:forControlEvents];
+</span><span class='line'>}
+</span><span class='line'>- (void)callback:(id)sender {
+</span><span class='line'>    void (^blocks)() = objc_getAssociatedObject(self, @"key");
+</span><span class='line'>    if (blocks) {
+</span><span class='line'>        blocks();
+</span><span class='line'>    }
+</span><span class='line'>}
+</span><span class='line'>@end</span></code></pre></td></tr></table></div></figure>
 
 
-<p>ちなみに、Javaでは<a href="http://ayanami.github.io/blog/java/is-numeric-java/">こんな感じ</a>。</p>
+<p>後は、任意のクラスでヘッダファイルをインポートすれば、<code>[UIControl addTargetWithBlocks:forControlEvents:]</code>が利用できる。</p>
 
-<p>Objective-Cは好きだけど、Javaと比べるとメソッド名が長い。。。</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[btn addTargetWithBlocks:^{
+</span><span class='line'>    NSLog(@"%@", @"hoge");
+</span><span class='line'>} forControlEvents:UIControlEventTouchUpInside];</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 
@@ -131,7 +169,7 @@
   
 
 
-<time datetime="2014-03-28T20:42:38+09:00" pubdate data-updated="true">Mar 28<span>th</span>, 2014</time>
+<time datetime="2014-04-26T01:40:31+09:00" pubdate data-updated="true">Apr 26<span>th</span>, 2014</time>
       
 
 <span class="categories">
@@ -148,12 +186,12 @@
   <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
   
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ayanami.github.io/blog/objective-c/is-numeric-objc/" data-via="" data-counturl="http://ayanami.github.io/blog/objective-c/is-numeric-objc/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ayanami.github.io/blog/objective-c/uicontrol-event-callback/" data-via="" data-counturl="http://ayanami.github.io/blog/objective-c/uicontrol-event-callback/" >Tweet</a>
   
   
   <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button"
       data-hatena-bookmark-layout="standard"
-      data-hatena-bookmark-url="http://ayanami.github.io/blog/objective-c/is-numeric-objc/">
+      data-hatena-bookmark-url="http://ayanami.github.io/blog/objective-c/uicontrol-event-callback/">
     <img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
         width="20" height="20" style="border: none">
   </a>
@@ -162,8 +200,8 @@
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/java/array-sort-java/" title="Previous Post: [Java]リストソート">&laquo; [Java]リストソート</a>
       
-        <a class="basic-alignment right" href="/blog/java/is-numeric-java/" title="Next Post: [Java]数値判定">[Java]数値判定 &raquo;</a>
       
     </p>
   </footer>

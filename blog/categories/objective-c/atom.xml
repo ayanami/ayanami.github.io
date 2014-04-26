@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Objective-c | NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/blog/categories/objective-c/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-04-25T20:59:07+09:00</updated>
+  <updated>2014-04-26T09:06:48+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -12,6 +12,63 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[Objective-C]UIControlのイベントハンドラに引数を渡す]]></title>
+    <link href="http://ayanami.github.io/blog/objective-c/uicontrol-event-callback/"/>
+    <updated>2014-04-26T01:40:31+09:00</updated>
+    <id>http://ayanami.github.io/blog/objective-c/uicontrol-event-callback</id>
+    <content type="html"><![CDATA[<p>Cocoaの<code>[UIControl addTarget:action:forControlEvents:]</code>では<code>action</code>に引数を設定することができないので、
+<code>category</code>と<code>blocks</code>を利用して、自由に定義したコールバックを渡す。</p>
+
+<p>ファイル名は<code>UIControl+Blocks</code>とする。まずはヘッダファイルを定義。
+```</p>
+
+<h1>import &lt;UIKit/UIKit.h></h1>
+
+<p>@interface UIControl(Blocks)
+&ndash; (void)addTargetWithBlocks:(void (^)())blocks forControlEvents:(UIControlEvents)forControlEvents;
+@end
+```</p>
+
+<p>次に実装ファイルファイルを定義。<code>category</code>内ではインスタンス変数を保持できないので、関連参照を用いて<code>blocks</code>をストアする。
+```</p>
+
+<h1>import &ldquo;UIControl+Blocks.h&rdquo;</h1>
+
+<h1>import &lt;objc/runtime.h></h1>
+
+<p>@implementation UIControl(Blocks)
+&ndash; (void)addTargetWithBlocks:(void (^)())blocks forControlEvents:(UIControlEvents)forControlEvents {</p>
+
+<pre><code>objc_setAssociatedObject(self, @"key", blocks, OBJC_ASSOCIATION_COPY);
+[self addTarget:self action:@selector(callback:) forControlEvents:forControlEvents];
+</code></pre>
+
+<p>}
+&ndash; (void)callback:(id)sender {</p>
+
+<pre><code>void (^blocks)() = objc_getAssociatedObject(self, @"key");
+if (blocks) {
+    blocks();
+}
+</code></pre>
+
+<p>}
+@end
+```</p>
+
+<p>後は、任意のクラスでヘッダファイルをインポートすれば、<code>[UIControl addTargetWithBlocks:forControlEvents:]</code>が利用できる。
+```
+[btn addTargetWithBlocks:^{</p>
+
+<pre><code>NSLog(@"%@", @"hoge");
+</code></pre>
+
+<p>} forControlEvents:UIControlEventTouchUpInside];
+```</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[Objective-C]配列ソート]]></title>
