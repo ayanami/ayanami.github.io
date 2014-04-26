@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Objective-c | NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/blog/categories/objective-c/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-04-26T09:06:48+09:00</updated>
+  <updated>2014-04-26T09:11:15+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -18,8 +18,8 @@
     <link href="http://ayanami.github.io/blog/objective-c/uicontrol-event-callback/"/>
     <updated>2014-04-26T01:40:31+09:00</updated>
     <id>http://ayanami.github.io/blog/objective-c/uicontrol-event-callback</id>
-    <content type="html"><![CDATA[<p>Cocoaの<code>[UIControl addTarget:action:forControlEvents:]</code>では<code>action</code>に引数を設定することができないので、
-<code>category</code>と<code>blocks</code>を利用して、自由に定義したコールバックを渡す。</p>
+    <content type="html"><![CDATA[<p>Cocoaの<code>[UIControl addTarget:action:forControlEvents:]</code>では<code>action</code>に設定するセレクタにに引数を渡すことができないので、
+<code>category</code>と<code>blocks</code>を利用して、自由に定義したコールバックを渡せるようにする。</p>
 
 <p>ファイル名は<code>UIControl+Blocks</code>とする。まずはヘッダファイルを定義。
 ```</p>

@@ -9,8 +9,8 @@
   <meta name="author" content="Yoshimasa.Suzuki">
 
   
-  <meta name="description" content="Cocoaの[UIControl addTarget:action:forControlEvents:]ではactionに引数を設定することができないので、
-categoryとblocksを利用して、自由に定義したコールバックを渡す。 ファイル名はUIControl+Blocksとする。 &hellip;">
+  <meta name="description" content="Cocoaの[UIControl addTarget:action:forControlEvents:]ではactionに設定するセレクタにに引数を渡すことができないので、
+categoryとblocksを利用して、自由に定義したコールバックを渡せるようにする。 ファイル名はUIControl+ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,8 +95,8 @@ categoryとblocksを利用して、自由に定義したコールバックを渡
   </header>
 
 
-  <div class="entry-content"><p>Cocoaの<code>[UIControl addTarget:action:forControlEvents:]</code>では<code>action</code>に引数を設定することができないので、
-<code>category</code>と<code>blocks</code>を利用して、自由に定義したコールバックを渡す。</p>
+  <div class="entry-content"><p>Cocoaの<code>[UIControl addTarget:action:forControlEvents:]</code>では<code>action</code>に設定するセレクタにに引数を渡すことができないので、
+<code>category</code>と<code>blocks</code>を利用して、自由に定義したコールバックを渡せるようにする。</p>
 
 <p>ファイル名は<code>UIControl+Blocks</code>とする。まずはヘッダファイルを定義。</p>
 
