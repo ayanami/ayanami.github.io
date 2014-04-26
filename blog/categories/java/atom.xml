@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Java | NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-04-26T09:13:04+09:00</updated>
+  <updated>2014-04-26T13:02:02+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -49,7 +49,7 @@ public class Fuga implements Comparator<Hoge> {</p>
 <code>
 比較処理を実行。
 </code>
-Arrays.sort(list.toArray(), new Fuga());
+Collections.sort(list, new Fuga());
 ```</p>
 
 <p>ちなみに、Objective-Cでは<a href="http://ayanami.github.io/blog/objective-c/array-sort-objc/">こんな感じ</a>。</p>

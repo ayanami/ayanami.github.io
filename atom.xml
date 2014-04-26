@@ -4,7 +4,7 @@
   <title><![CDATA[NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-04-26T09:13:04+09:00</updated>
+  <updated>2014-04-26T13:02:02+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -119,7 +119,7 @@
 <p>比較処理を実行。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Arrays.sort(list.toArray(), new Fuga());</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Collections.sort(list, new Fuga());</span></code></pre></td></tr></table></div></figure>
 
 
 <p>ちなみに、Objective-Cでは<a href="http://ayanami.github.io/blog/objective-c/array-sort-objc/">こんな感じ</a>。</p>
