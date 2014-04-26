@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Objective-c | NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/blog/categories/objective-c/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-04-26T13:02:02+09:00</updated>
+  <updated>2014-04-26T13:45:06+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -31,7 +31,7 @@
 @end
 ```</p>
 
-<p>次に実装ファイルファイルを定義。<code>category</code>内ではインスタンス変数を保持できないので、関連参照を用いて<code>blocks</code>をストアする。
+<p>次に実装ファイルを定義。<code>category</code>内ではインスタンス変数を保持できないので、関連参照を用いて<code>blocks</code>をストアする。
 ```</p>
 
 <h1>import &ldquo;UIControl+Blocks.h&rdquo;</h1>
