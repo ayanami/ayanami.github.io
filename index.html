@@ -9,11 +9,19 @@
   <meta name="author" content="Yoshimasa.Suzuki">
 
   
-  <meta name="description" content="GitHubからcloneしたOctopressのディレクトリ直下で、以下コマンドを実行。 1
-bundle exec rake new_post['title'] octopress/source/_post/直下にyyyy-mm-dd-title.markdownが作成される。 1
+  <meta name="description" content="YiiフレームワークのWidgetを普通に使う場合はこんな感じ。 1
 2
 3
-4 &hellip;">
+4
+5
+6
+7
+8
+9
+10
+11
+12
+$this-&gt;widget('zii.widgets.jui.CJuiDatePicker', array( 'model'=&gt;$model, 'attribute &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -69,6 +77,97 @@ bundle exec rake new_post['title'] octopress/source/_post/直下にyyyy-mm-dd-ti
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/php/yii-widget-by-smarty/">[PHP]SmartyでYiiのWidgetを使う</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-05T01:12:40+09:00" pubdate data-updated="true">Jun 5<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>Yii</code>フレームワークの<code>Widget</code>を普通に使う場合はこんな感じ。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$this-&gt;widget('zii.widgets.jui.CJuiDatePicker', array(
+</span><span class='line'>    'model'=&gt;$model,
+</span><span class='line'>    'attribute'=&gt;'birthday',
+</span><span class='line'>    'language'=&gt;'ja',
+</span><span class='line'>    'options'=&gt;array(
+</span><span class='line'>        'dateFormat'=&gt;'yy-mm-dd',
+</span><span class='line'>        'firstDay' =&gt; 1,
+</span><span class='line'>        'yearRange'=&gt;'1900:+0',
+</span><span class='line'>        'changeYear'=&gt;'true',
+</span><span class='line'>        'changeMonth'=&gt;'true'
+</span><span class='line'>    ),
+</span><span class='line'>));</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>Smarty</code>テンプレートエンジンを使った場合はこんな感じ。
+<code>array</code>の書き方と、<code>widget</code>の第3引数の<code>true</code>がポイント。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{$this-&gt;widget('zii.widgets.jui.CJuiDatePicker', [
+</span><span class='line'>    'model'=&gt;$model,
+</span><span class='line'>    'attribute'=&gt;'birthday',
+</span><span class='line'>    'language'=&gt;'ja',
+</span><span class='line'>    'options'=&gt;[
+</span><span class='line'>        'dateFormat'=&gt;'yy-mm-dd',
+</span><span class='line'>        'firstDay' =&gt; 1,
+</span><span class='line'>        'yearRange'=&gt;'1900:+0',
+</span><span class='line'>        'changeYear'=&gt;'true',
+</span><span class='line'>        'changeMonth'=&gt;'true'
+</span><span class='line'>    ]
+</span><span class='line'>], true)}</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -482,6 +581,10 @@ bundle exec rake new_post['title'] octopress/source/_post/直下にyyyy-mm-dd-ti
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/php/yii-widget-by-smarty/">[PHP]SmartyでYiiのWidgetを使う</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/octopress/octopress/">[Octopress]GitHubでブログを書く</a>
       </li>
     
@@ -497,15 +600,11 @@ bundle exec rake new_post['title'] octopress/source/_post/直下にyyyy-mm-dd-ti
         <a href="/blog/objective-c/array-sort-objc/">[Objective-C]配列ソート</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/java/is-numeric-java/">[Java]数値判定</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-  <ul id="category-list"><li><a href='/blog/categories/java/'>java (2)</a></li><li><a href='/blog/categories/objective-c/'>objective-c (3)</a></li><li><a href='/blog/categories/octopress/'>octopress (1)</a></li></ul>
+  <ul id="category-list"><li><a href='/blog/categories/java/'>java (2)</a></li><li><a href='/blog/categories/objective-c/'>objective-c (3)</a></li><li><a href='/blog/categories/octopress/'>octopress (1)</a></li><li><a href='/blog/categories/php/'>php (1)</a></li></ul>
 </section>
 
 

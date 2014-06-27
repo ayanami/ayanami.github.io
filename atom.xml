@@ -4,7 +4,7 @@
   <title><![CDATA[NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-06-28T01:08:25+09:00</updated>
+  <updated>2014-06-28T01:30:54+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -12,6 +12,70 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[PHP]SmartyでYiiのWidgetを使う]]></title>
+    <link href="http://ayanami.github.io/blog/php/yii-widget-by-smarty/"/>
+    <updated>2014-06-05T01:12:40+09:00</updated>
+    <id>http://ayanami.github.io/blog/php/yii-widget-by-smarty</id>
+    <content type="html"><![CDATA[<p><code>Yii</code>フレームワークの<code>Widget</code>を普通に使う場合はこんな感じ。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$this-&gt;widget('zii.widgets.jui.CJuiDatePicker', array(
+</span><span class='line'>    'model'=&gt;$model,
+</span><span class='line'>    'attribute'=&gt;'birthday',
+</span><span class='line'>    'language'=&gt;'ja',
+</span><span class='line'>    'options'=&gt;array(
+</span><span class='line'>        'dateFormat'=&gt;'yy-mm-dd',
+</span><span class='line'>        'firstDay' =&gt; 1,
+</span><span class='line'>        'yearRange'=&gt;'1900:+0',
+</span><span class='line'>        'changeYear'=&gt;'true',
+</span><span class='line'>        'changeMonth'=&gt;'true'
+</span><span class='line'>    ),
+</span><span class='line'>));</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>Smarty</code>テンプレートエンジンを使った場合はこんな感じ。
+<code>array</code>の書き方と、<code>widget</code>の第3引数の<code>true</code>がポイント。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{$this-&gt;widget('zii.widgets.jui.CJuiDatePicker', [
+</span><span class='line'>    'model'=&gt;$model,
+</span><span class='line'>    'attribute'=&gt;'birthday',
+</span><span class='line'>    'language'=&gt;'ja',
+</span><span class='line'>    'options'=&gt;[
+</span><span class='line'>        'dateFormat'=&gt;'yy-mm-dd',
+</span><span class='line'>        'firstDay' =&gt; 1,
+</span><span class='line'>        'yearRange'=&gt;'1900:+0',
+</span><span class='line'>        'changeYear'=&gt;'true',
+</span><span class='line'>        'changeMonth'=&gt;'true'
+</span><span class='line'>    ]
+</span><span class='line'>], true)}</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[Octopress]GitHubでブログを書く]]></title>
