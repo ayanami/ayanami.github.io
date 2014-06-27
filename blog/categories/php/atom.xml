@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Php | NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-06-28T03:45:44+09:00</updated>
+  <updated>2014-06-28T03:50:24+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -75,28 +75,30 @@ function toBar() {
 
 <p>最後に<code>AjaxController.php</code>。<code>CController#renderPartial()</code>を利用する。
 ```
-// Ajaxのリクエストを判定。
-if (isset($_GET[&lsquo;ajaxRequest&rsquo;]))
+public function actionIndex()
 {</p>
 
-<pre><code>// 部分テンプレートを文字列として取得。
-// 第3引数をtrueにすることで、文字列として取得できる。
-$content = $this-&gt;renderPartial('part', array(
-        'baseUrl' =&gt; Yii::app()-&gt;createUrl('hoge'),
-    ), true);
+<pre><code>// Ajaxのリクエストを判定。
+if (isset($_GET['ajaxRequest']))
+{
+    // 部分テンプレートを文字列として取得。
+    // 第3引数をtrueにすることで、文字列として取得できる。
+    $content = $this-&gt;renderPartial('part', array(
+            'baseUrl' =&gt; Yii::app()-&gt;createUrl('base'),
+        ), true);
 
-$data = array(
-        'content' =&gt; $content,
-    );
+    $data = array(
+            'content' =&gt; $content,
+        );
 
-// アウトプットを文字列としてレンダリング。
-// 第4引数をtrueにすることで、文字列としてレンダリングできる。
-$this-&gt;renderPartial('ajax_content', CJSON::encode(array('data'=&gt;$data)), false, true);
+    // アウトプットを文字列としてレンダリング。
+    // 第4引数をtrueにすることで、文字列としてレンダリングできる。
+    $this-&gt;renderPartial('ajax_content', CJSON::encode(array('data'=&gt;$data)), false, true);
+}
 </code></pre>
 
-<p>}</p>
-
-<p>```</p>
+<p>}
+```</p>
 ]]></content>
   </entry>
   
