@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Php | NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-06-28T03:51:37+09:00</updated>
+  <updated>2014-06-28T03:56:42+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -36,6 +36,7 @@
 
 <p>続いて、テンプレートとなる<code>part.tpl</code>
 <code>
+&lt;input id="base-url" type="hidden" value={$baseUrl}&gt;
 bar
 </code></p>
 
