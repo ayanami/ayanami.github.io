@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Java | NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-06-28T03:56:42+09:00</updated>
+  <updated>2014-06-28T04:11:15+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -12,6 +12,20 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[Java]Struts2 + Velocityで呼び出すメソッドを指定する]]></title>
+    <link href="http://ayanami.github.io/blog/java/define-target-method-by-velocity/"/>
+    <updated>2014-06-28T03:59:14+09:00</updated>
+    <id>http://ayanami.github.io/blog/java/define-target-method-by-velocity</id>
+    <content type="html"><![CDATA[<p><code>Velocity</code>テンプレートエンジンで、<code>Struts2</code>のActionメソッドを指定する方法。</p>
+
+<p><code>name</code>属性を<code>method:メソッド名</code>の形式で定義する。
+<code>
+&lt;input type="submit" name="method:add"　value="hoge"&gt;
+</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[Java]リストソート]]></title>

@@ -9,10 +9,8 @@
   <meta name="author" content="Yoshimasa.Suzuki">
 
   
-  <meta name="description" content="Yiiフレームワークを利用して、部分テンプレートを実装する方法。fooをbarに書き換えてみる。 まずはベースとなるbase.tpl。 1
-2
-3
-&lt;script type="text/javascript" src="{Yii::app()-&gt;request-&gt;baseUrl &hellip;">
+  <meta name="description" content="Velocityテンプレートエンジンで、Struts2のActionメソッドを指定する方法。 name属性をmethod:メソッド名の形式で定義する。 1
+&lt;input type="submit" name="method:add"　value="hoge"&gt; ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -68,6 +66,48 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/java/define-target-method-by-velocity/">[Java]Struts2 + Velocityで呼び出すメソッドを指定する</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-28T03:59:14+09:00" pubdate data-updated="true">Jun 28<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>Velocity</code>テンプレートエンジンで、<code>Struts2</code>のActionメソッドを指定する方法。</p>
+
+<p><code>name</code>属性を<code>method:メソッド名</code>の形式で定義する。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;input type="submit" name="method:add"　value="hoge"&gt;</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -783,6 +823,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/java/define-target-method-by-velocity/">[Java]Struts2 + Velocityで呼び出すメソッドを指定する</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/php/render-partial-yii/">[PHP]Yii + Ajaxで部分テンプレートを表示する</a>
       </li>
     
@@ -798,15 +842,11 @@
         <a href="/blog/octopress/octopress/">[Octopress]GitHubでブログを書く</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/objective-c/uicontrol-event-callback/">[Objective-C]UIControlのイベントハンドラに引数を渡す</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-  <ul id="category-list"><li><a href='/blog/categories/java/'>java (2)</a></li><li><a href='/blog/categories/objective-c/'>objective-c (3)</a></li><li><a href='/blog/categories/octopress/'>octopress (1)</a></li><li><a href='/blog/categories/passenger/'>passenger (1)</a></li><li><a href='/blog/categories/php/'>php (2)</a></li></ul>
+  <ul id="category-list"><li><a href='/blog/categories/java/'>java (3)</a></li><li><a href='/blog/categories/objective-c/'>objective-c (3)</a></li><li><a href='/blog/categories/octopress/'>octopress (1)</a></li><li><a href='/blog/categories/passenger/'>passenger (1)</a></li><li><a href='/blog/categories/php/'>php (2)</a></li></ul>
 </section>
 
 
