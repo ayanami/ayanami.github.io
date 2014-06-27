@@ -4,7 +4,7 @@
   <title><![CDATA[NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-06-28T01:47:22+09:00</updated>
+  <updated>2014-06-28T02:22:01+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -60,7 +60,7 @@
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$this-&gt;widget('zii.widgets.jui.CJuiDatePicker', array(
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;?php $this-&gt;widget('zii.widgets.jui.CJuiDatePicker', array(
 </span><span class='line'>    'model'=&gt;$model,
 </span><span class='line'>    'attribute'=&gt;'birthday',
 </span><span class='line'>    'language'=&gt;'ja',
@@ -71,7 +71,7 @@
 </span><span class='line'>        'changeYear'=&gt;'true',
 </span><span class='line'>        'changeMonth'=&gt;'true'
 </span><span class='line'>    ),
-</span><span class='line'>));</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>)); ?&gt;</span></code></pre></td></tr></table></div></figure>
 
 
 <p><code>Smarty</code>テンプレートエンジンを使った場合はこんな感じ。

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Php | NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-06-28T01:47:22+09:00</updated>
+  <updated>2014-06-28T02:22:01+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -20,7 +20,7 @@
     <id>http://ayanami.github.io/blog/php/yii-widget-by-smarty</id>
     <content type="html"><![CDATA[<p><code>Yii</code>フレームワークの<code>Widget</code>を普通に使う場合はこんな感じ。
 ```
-$this->widget(&lsquo;zii.widgets.jui.CJuiDatePicker&rsquo;, array(</p>
+&lt;?php $this->widget(&lsquo;zii.widgets.jui.CJuiDatePicker&rsquo;, array(</p>
 
 <pre><code>'model'=&gt;$model,
 'attribute'=&gt;'birthday',
@@ -34,7 +34,7 @@ $this->widget(&lsquo;zii.widgets.jui.CJuiDatePicker&rsquo;, array(</p>
 ),
 </code></pre>
 
-<p>));
+<p>)); ?>
 ```</p>
 
 <p><code>Smarty</code>テンプレートエンジンを使った場合はこんな感じ。
