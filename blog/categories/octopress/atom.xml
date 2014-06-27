@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Octopress | NO プログラム NO LIFE]]></title>
+  <link href="http://ayanami.github.io/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://ayanami.github.io/"/>
+  <updated>2014-06-28T01:08:25+09:00</updated>
+  <id>http://ayanami.github.io/</id>
+  <author>
+    <name><![CDATA[Yoshimasa.Suzuki]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[[Octopress]GitHubでブログを書く]]></title>
+    <link href="http://ayanami.github.io/blog/octopress/octopress/"/>
+    <updated>2014-06-01T00:48:15+09:00</updated>
+    <id>http://ayanami.github.io/blog/octopress/octopress</id>
+    <content type="html"><![CDATA[<p>GitHubからcloneしたOctopressのディレクトリ直下で、以下コマンドを実行。
+<code>
+bundle exec rake new_post['title']
+</code></p>
+
+<p><code>octopress/source/_post/</code>直下に<code>yyyy-mm-dd-title.markdown</code>が作成される。
+<code>
+layout: post
+title: "title"
+date: 2014-06-01 00:48:15 +0900
+comments: true
+categories:
+</code></p>
+
+<p><code>markdown</code>で記事を生成し、以下のコマンドを実行。
+実行後、<code>http://localhost:4000/</code>にアクセスして、内容を確認する。
+<code>
+bundle exec rake preview
+</code></p>
+
+<p>内容がOKなら、以下のコマンドを実行。
+実行後、<code>http://username.github.io</code>にアクセス。
+<code>
+bundle exec rake gen_deploy
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>

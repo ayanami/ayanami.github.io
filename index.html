@@ -9,8 +9,11 @@
   <meta name="author" content="Yoshimasa.Suzuki">
 
   
-  <meta name="description" content="Cocoaの[UIControl addTarget:action:forControlEvents:]ではactionに設定するセレクタに引数を渡すことができないので、
-categoryとblocksを利用して、自由に定義したコールバックを渡せるようにする。 ファイル名はUIControl+ &hellip;">
+  <meta name="description" content="GitHubからcloneしたOctopressのディレクトリ直下で、以下コマンドを実行。 1
+bundle exec rake new_post['title'] octopress/source/_post/直下にyyyy-mm-dd-title.markdownが作成される。 1
+2
+3
+4 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +69,76 @@ categoryとblocksを利用して、自由に定義したコールバックを渡
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/octopress/octopress/">[Octopress]GitHubでブログを書く</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-01T00:48:15+09:00" pubdate data-updated="true">Jun 1<span>st</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>GitHubからcloneしたOctopressのディレクトリ直下で、以下コマンドを実行。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bundle exec rake new_post['title']</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>octopress/source/_post/</code>直下に<code>yyyy-mm-dd-title.markdown</code>が作成される。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>layout: post
+</span><span class='line'>title: "title"
+</span><span class='line'>date: 2014-06-01 00:48:15 +0900
+</span><span class='line'>comments: true
+</span><span class='line'>categories: </span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>markdown</code>で記事を生成し、以下のコマンドを実行。
+実行後、<code>http://localhost:4000/</code>にアクセスして、内容を確認する。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bundle exec rake preview</span></code></pre></td></tr></table></div></figure>
+
+
+<p>内容がOKなら、以下のコマンドを実行。
+実行後、<code>http://username.github.io</code>にアクセス。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bundle exec rake gen_deploy</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -409,6 +482,10 @@ categoryとblocksを利用して、自由に定義したコールバックを渡
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/octopress/octopress/">[Octopress]GitHubでブログを書く</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/objective-c/uicontrol-event-callback/">[Objective-C]UIControlのイベントハンドラに引数を渡す</a>
       </li>
     
@@ -424,15 +501,11 @@ categoryとblocksを利用して、自由に定義したコールバックを渡
         <a href="/blog/java/is-numeric-java/">[Java]数値判定</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/objective-c/is-numeric-objc/">[Objective-C]数値判定</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-  <ul id="category-list"><li><a href='/blog/categories/java/'>java (2)</a></li><li><a href='/blog/categories/objective-c/'>objective-c (3)</a></li></ul>
+  <ul id="category-list"><li><a href='/blog/categories/java/'>java (2)</a></li><li><a href='/blog/categories/objective-c/'>objective-c (3)</a></li><li><a href='/blog/categories/octopress/'>octopress (1)</a></li></ul>
 </section>
 
 

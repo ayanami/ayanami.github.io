@@ -4,7 +4,7 @@
   <title><![CDATA[NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-04-26T13:45:06+09:00</updated>
+  <updated>2014-06-28T01:08:25+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -12,6 +12,49 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[Octopress]GitHubでブログを書く]]></title>
+    <link href="http://ayanami.github.io/blog/octopress/octopress/"/>
+    <updated>2014-06-01T00:48:15+09:00</updated>
+    <id>http://ayanami.github.io/blog/octopress/octopress</id>
+    <content type="html"><![CDATA[<p>GitHubからcloneしたOctopressのディレクトリ直下で、以下コマンドを実行。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bundle exec rake new_post['title']</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>octopress/source/_post/</code>直下に<code>yyyy-mm-dd-title.markdown</code>が作成される。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>layout: post
+</span><span class='line'>title: "title"
+</span><span class='line'>date: 2014-06-01 00:48:15 +0900
+</span><span class='line'>comments: true
+</span><span class='line'>categories: </span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>markdown</code>で記事を生成し、以下のコマンドを実行。
+実行後、<code>http://localhost:4000/</code>にアクセスして、内容を確認する。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bundle exec rake preview</span></code></pre></td></tr></table></div></figure>
+
+
+<p>内容がOKなら、以下のコマンドを実行。
+実行後、<code>http://username.github.io</code>にアクセス。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bundle exec rake gen_deploy</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[Objective-C]UIControlのイベントハンドラに引数を渡す]]></title>
