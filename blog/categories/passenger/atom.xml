@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Passenger | NO プログラム NO LIFE]]></title>
+  <link href="http://ayanami.github.io/blog/categories/passenger/atom.xml" rel="self"/>
+  <link href="http://ayanami.github.io/"/>
+  <updated>2014-06-28T01:46:30+09:00</updated>
+  <id>http://ayanami.github.io/</id>
+  <author>
+    <name><![CDATA[Yoshimasa.Suzuki]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[[Passenger]複数アプリケーションを配置する]]></title>
+    <link href="http://ayanami.github.io/blog/passenger/deploy-some-apps-passenger/"/>
+    <updated>2014-06-11T01:39:49+09:00</updated>
+    <id>http://ayanami.github.io/blog/passenger/deploy-some-apps-passenger</id>
+    <content type="html"><![CDATA[<p>hogeアプリとfugaアプリを配置したい場合。
+<code>/etc/httpd/conf.d/</code>直下に配置した任意の<code>.conf</code>ファイルを以下の様に記載。
+<code>
+&lt;Location /redmine&gt;
+  PassengerAppRoot /opt/hoge
+  RailsBaseURI /hoge
+&lt;/Location&gt;
+&lt;Location /pond&gt;
+  PassengerAppRoot /opt/fuga
+  RailsBaseURI /fuga
+&lt;/Location&gt;
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>

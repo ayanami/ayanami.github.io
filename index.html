@@ -9,7 +9,8 @@
   <meta name="author" content="Yoshimasa.Suzuki">
 
   
-  <meta name="description" content="YiiフレームワークのWidgetを普通に使う場合はこんな感じ。 1
+  <meta name="description" content="hogeアプリとfugaアプリを配置したい場合。
+/etc/httpd/conf.d/直下に配置した任意の.confファイルを以下の様に記載。 1
 2
 3
 4
@@ -17,11 +18,7 @@
 6
 7
 8
-9
-10
-11
-12
-$this-&gt;widget('zii.widgets.jui.CJuiDatePicker', array( 'model'=&gt;$model, 'attribute &hellip;">
+&lt;Location /redmine&gt; PassengerAppRoot /opt/hoge &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +74,61 @@ $this-&gt;widget('zii.widgets.jui.CJuiDatePicker', array( 'model'=&gt;$model, 'a
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/passenger/deploy-some-apps-passenger/">[Passenger]複数アプリケーションを配置する</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-11T01:39:49+09:00" pubdate data-updated="true">Jun 11<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>hogeアプリとfugaアプリを配置したい場合。
+<code>/etc/httpd/conf.d/</code>直下に配置した任意の<code>.conf</code>ファイルを以下の様に記載。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;Location /redmine&gt;
+</span><span class='line'>  PassengerAppRoot /opt/hoge
+</span><span class='line'>  RailsBaseURI /hoge
+</span><span class='line'>&lt;/Location&gt;
+</span><span class='line'>&lt;Location /pond&gt;
+</span><span class='line'>  PassengerAppRoot /opt/fuga
+</span><span class='line'>  RailsBaseURI /fuga
+</span><span class='line'>&lt;/Location&gt;</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -581,6 +633,10 @@ $this-&gt;widget('zii.widgets.jui.CJuiDatePicker', array( 'model'=&gt;$model, 'a
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/passenger/deploy-some-apps-passenger/">[Passenger]複数アプリケーションを配置する</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/php/yii-widget-by-smarty/">[PHP]SmartyでYiiのWidgetを使う</a>
       </li>
     
@@ -596,15 +652,11 @@ $this-&gt;widget('zii.widgets.jui.CJuiDatePicker', array( 'model'=&gt;$model, 'a
         <a href="/blog/java/array-sort-java/">[Java]リストソート</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/objective-c/array-sort-objc/">[Objective-C]配列ソート</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-  <ul id="category-list"><li><a href='/blog/categories/java/'>java (2)</a></li><li><a href='/blog/categories/objective-c/'>objective-c (3)</a></li><li><a href='/blog/categories/octopress/'>octopress (1)</a></li><li><a href='/blog/categories/php/'>php (1)</a></li></ul>
+  <ul id="category-list"><li><a href='/blog/categories/java/'>java (2)</a></li><li><a href='/blog/categories/objective-c/'>objective-c (3)</a></li><li><a href='/blog/categories/octopress/'>octopress (1)</a></li><li><a href='/blog/categories/passenger/'>passenger (1)</a></li><li><a href='/blog/categories/php/'>php (1)</a></li></ul>
 </section>
 
 
