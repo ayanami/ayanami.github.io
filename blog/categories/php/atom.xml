@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Php | NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-06-28T02:22:01+09:00</updated>
+  <updated>2014-06-28T03:11:07+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[PHP]Yii + Ajaxで部分テンプレートを表示する]]></title>
+    <link href="http://ayanami.github.io/blog/php/render-partial-yii/"/>
+    <updated>2014-06-17T02:33:18+09:00</updated>
+    <id>http://ayanami.github.io/blog/php/render-partial-yii</id>
+    <content type="html"><![CDATA[<p><code>Yii</code>フレームワークを利用して、部分テンプレートを実装する方法。</p>
+
+<p><code>CController#renderPartial()</code>を利用する。
+```
+// Ajaxのリクエストを判定
+if (isset($_GET[&lsquo;ajaxRequest&rsquo;]))
+{</p>
+
+<pre><code>$content = $this-&gt;renderPartial('_calendar', array(
+        'calendar'        =&gt; $calendar,
+        'begginingDate'   =&gt; $beggining_date,
+        'baseUrl' =&gt; Yii::app()-&gt;createUrl('calendarbox'),
+    ), true);
+
+$data = array(
+        'content' =&gt; $content,
+        'monthTitle' =&gt; date('F Y', strtotime($beggining_date)),
+    );
+
+$this-&gt;renderPartial('_ajax_content', CJSON::encode(array('data'=&gt;$data)), false, true);
+</code></pre>
+
+<p>}</p>
+
+<p>```</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[PHP]SmartyでYiiのWidgetを使う]]></title>
