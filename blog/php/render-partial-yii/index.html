@@ -91,9 +91,31 @@
   </header>
 
 
-<div class="entry-content"><p><code>Yii</code>フレームワークを利用して、部分テンプレートを実装する方法。</p>
+<div class="entry-content"><p><code>Yii</code>フレームワークを利用して、部分テンプレートを実装する方法。<code>foo</code>を<code>bar</code>に書き換えてみる。</p>
 
-<p><code>CController#renderPartial()</code>を利用する。</p>
+<p>まずはベースとなる<code>base.tpl</code>。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;script type="text/javascript" src="{Yii::app()-&gt;request-&gt;baseUrl}/js/ajax.js"&gt;&lt;/script&gt;
+</span><span class='line'>&lt;div id="button"&gt;fooをbarに書き換える&lt;/div&gt;
+</span><span class='line'>&lt;div id="replace-area"&gt;foo&lt;/div&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>続いて、テンプレートとなる<code>part.tpl</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bar</span></code></pre></td></tr></table></div></figure>
+
+
+<p>テンプレートをレンダリングする<code>ajax_content.php</code>。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;?php echo $data; ?&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>base.tpl</code>で読み込んでいる<code>ajax.js</code></p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -111,21 +133,73 @@
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>// Ajaxのリクエストを判定
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$(document).ready(function() {'use strict';
+</span><span class='line'>
+</span><span class='line'>    $(document).on('click', '#button', function() {
+</span><span class='line'>        toBar();
+</span><span class='line'>    });
+</span><span class='line'>
+</span><span class='line'>    function toBar() {
+</span><span class='line'>        return $.ajax({
+</span><span class='line'>            type: "GET",
+</span><span class='line'>            url: $("#base-url").val(),
+</span><span class='line'>            data: {
+</span><span class='line'>                ajaxRequest: "ajaxRequest"
+</span><span class='line'>            },
+</span><span class='line'>            complete: function(response) {
+</span><span class='line'>                var json = $.parseJSON(response.responseText);
+</span><span class='line'>                $("#replace-area").empty();
+</span><span class='line'>                if (json.data.content.length &gt; 0) {
+</span><span class='line'>                    $("#replace-area").append(json.data.content);
+</span><span class='line'>                };
+</span><span class='line'>            }
+</span><span class='line'>        });
+</span><span class='line'>    };
+</span><span class='line'>});</span></code></pre></td></tr></table></div></figure>
+
+
+<p>最後に<code>AjaxController.php</code>。<code>CController#renderPartial()</code>を利用する。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>// Ajaxのリクエストを判定。
 </span><span class='line'>if (isset($_GET['ajaxRequest']))
 </span><span class='line'>{
-</span><span class='line'>    $content = $this-&gt;renderPartial('_calendar', array(
-</span><span class='line'>            'calendar'        =&gt; $calendar,
-</span><span class='line'>            'begginingDate'   =&gt; $beggining_date,
-</span><span class='line'>            'baseUrl' =&gt; Yii::app()-&gt;createUrl('calendarbox'),
+</span><span class='line'>    // 部分テンプレートを文字列として取得。
+</span><span class='line'>    // 第3引数をtrueにすることで、文字列として取得できる。
+</span><span class='line'>    $content = $this-&gt;renderPartial('part', array(
+</span><span class='line'>            'baseUrl' =&gt; Yii::app()-&gt;createUrl('hoge'),
 </span><span class='line'>        ), true);
 </span><span class='line'>
 </span><span class='line'>    $data = array(
 </span><span class='line'>            'content' =&gt; $content,
-</span><span class='line'>            'monthTitle' =&gt; date('F Y', strtotime($beggining_date)),
 </span><span class='line'>        );
 </span><span class='line'>
-</span><span class='line'>    $this-&gt;renderPartial('_ajax_content', CJSON::encode(array('data'=&gt;$data)), false, true);
+</span><span class='line'>    // アウトプットを文字列としてレンダリング。
+</span><span class='line'>    // 第4引数をtrueにすることで、文字列としてレンダリングできる。
+</span><span class='line'>    $this-&gt;renderPartial('ajax_content', CJSON::encode(array('data'=&gt;$data)), false, true);
 </span><span class='line'>}
 </span></code></pre></td></tr></table></div></figure>
 

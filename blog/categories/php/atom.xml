@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Php | NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-06-28T03:11:07+09:00</updated>
+  <updated>2014-06-28T03:45:44+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -18,26 +18,80 @@
     <link href="http://ayanami.github.io/blog/php/render-partial-yii/"/>
     <updated>2014-06-17T02:33:18+09:00</updated>
     <id>http://ayanami.github.io/blog/php/render-partial-yii</id>
-    <content type="html"><![CDATA[<p><code>Yii</code>フレームワークを利用して、部分テンプレートを実装する方法。</p>
+    <content type="html"><![CDATA[<p><code>Yii</code>フレームワークを利用して、部分テンプレートを実装する方法。<code>foo</code>を<code>bar</code>に書き換えてみる。</p>
 
-<p><code>CController#renderPartial()</code>を利用する。
+<p>まずはベースとなる<code>base.tpl</code>。
+```</p>
+
+<script type="text/javascript" src="{Yii::app()->request->baseUrl}/js/ajax.js"></script>
+
+
+<div id="button">fooをbarに書き換える</div>
+
+
+<div id="replace-area">foo</div>
+
+
+<p>```</p>
+
+<p>続いて、テンプレートとなる<code>part.tpl</code>
+<code>
+bar
+</code></p>
+
+<p>テンプレートをレンダリングする<code>ajax_content.php</code>。
+<code>
+&lt;?php echo $data; ?&gt;
+</code></p>
+
+<p><code>base.tpl</code>で読み込んでいる<code>ajax.js</code>
 ```
-// Ajaxのリクエストを判定
+$(document).ready(function() {&lsquo;use strict&rsquo;;</p>
+
+<pre><code>$(document).on('click', '#button', function() {
+    toBar();
+});
+
+function toBar() {
+    return $.ajax({
+        type: "GET",
+        url: $("#base-url").val(),
+        data: {
+            ajaxRequest: "ajaxRequest"
+        },
+        complete: function(response) {
+            var json = $.parseJSON(response.responseText);
+            $("#replace-area").empty();
+            if (json.data.content.length &gt; 0) {
+                $("#replace-area").append(json.data.content);
+            };
+        }
+    });
+};
+</code></pre>
+
+<p>});
+```</p>
+
+<p>最後に<code>AjaxController.php</code>。<code>CController#renderPartial()</code>を利用する。
+```
+// Ajaxのリクエストを判定。
 if (isset($_GET[&lsquo;ajaxRequest&rsquo;]))
 {</p>
 
-<pre><code>$content = $this-&gt;renderPartial('_calendar', array(
-        'calendar'        =&gt; $calendar,
-        'begginingDate'   =&gt; $beggining_date,
-        'baseUrl' =&gt; Yii::app()-&gt;createUrl('calendarbox'),
+<pre><code>// 部分テンプレートを文字列として取得。
+// 第3引数をtrueにすることで、文字列として取得できる。
+$content = $this-&gt;renderPartial('part', array(
+        'baseUrl' =&gt; Yii::app()-&gt;createUrl('hoge'),
     ), true);
 
 $data = array(
         'content' =&gt; $content,
-        'monthTitle' =&gt; date('F Y', strtotime($beggining_date)),
     );
 
-$this-&gt;renderPartial('_ajax_content', CJSON::encode(array('data'=&gt;$data)), false, true);
+// アウトプットを文字列としてレンダリング。
+// 第4引数をtrueにすることで、文字列としてレンダリングできる。
+$this-&gt;renderPartial('ajax_content', CJSON::encode(array('data'=&gt;$data)), false, true);
 </code></pre>
 
 <p>}</p>
