@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Php | NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-06-28T03:50:24+09:00</updated>
+  <updated>2014-06-28T03:51:37+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -93,7 +93,8 @@ if (isset($_GET['ajaxRequest']))
 
     // アウトプットを文字列としてレンダリング。
     // 第4引数をtrueにすることで、文字列としてレンダリングできる。
-    $this-&gt;renderPartial('ajax_content', CJSON::encode(array('data'=&gt;$data)), false, true);
+    $this-&gt;renderPartial('ajax_content',
+          CJSON::encode(array('data'=&gt;$data)), false, true);
 }
 </code></pre>
 

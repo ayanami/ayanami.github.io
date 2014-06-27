@@ -193,6 +193,7 @@
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
+<span class='line-number'>21</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>public function actionIndex()
 </span><span class='line'>{
 </span><span class='line'>    // Ajaxのリクエストを判定。
@@ -210,7 +211,8 @@
 </span><span class='line'>
 </span><span class='line'>        // アウトプットを文字列としてレンダリング。
 </span><span class='line'>        // 第4引数をtrueにすることで、文字列としてレンダリングできる。
-</span><span class='line'>        $this-&gt;renderPartial('ajax_content', CJSON::encode(array('data'=&gt;$data)), false, true);
+</span><span class='line'>        $this-&gt;renderPartial('ajax_content',
+</span><span class='line'>              CJSON::encode(array('data'=&gt;$data)), false, true);
 </span><span class='line'>    }
 </span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
