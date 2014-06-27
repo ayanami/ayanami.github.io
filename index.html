@@ -100,9 +100,9 @@ com.opensymphony.xwork2.validator.annotations.VisitorFieldValidatorアノテー�
   </header>
 
 
-  <div class="entry-content"><p><code>Struts2</code>で<code>Action</code>ではなく、<code>Model</code>でValidatorを定義する方法。</p>
+  <div class="entry-content"><p><code>Struts2</code>でActionではなく、ModelでValidatorを定義する方法。</p>
 
-<p>まずは<code>Action</code>。
+<p>まずはAction。
 <code>com.opensymphony.xwork2.validator.annotations.VisitorFieldValidator</code>アノテーションを利用する。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -119,7 +119,7 @@ com.opensymphony.xwork2.validator.annotations.VisitorFieldValidatorアノテー�
 </span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
 
-<p>続いて、<code>Model</code>。</p>
+<p>続いて、Model。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -143,13 +143,13 @@ com.opensymphony.xwork2.validator.annotations.VisitorFieldValidatorアノテー�
 </span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
 
-<p><code>message.properties</code>。</p>
+<p>message.properties。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>errors.required={0}は入力必須です。</span></code></pre></td></tr></table></div></figure>
 
 
-<p>最後に<code>View</code>。<code>name</code>属性を<code>オブジェクト.プロパティ</code>の形式で定義する。</p>
+<p>最後にView。<code>name</code>属性を<code>オブジェクト.プロパティ</code>の形式で定義する。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>&lt;s:textfield name="hogeDto.foo" /&gt;</span></code></pre></td></tr></table></div></figure>

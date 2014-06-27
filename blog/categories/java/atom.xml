@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Java | NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-06-28T04:34:20+09:00</updated>
+  <updated>2014-06-28T04:36:00+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -18,9 +18,9 @@
     <link href="http://ayanami.github.io/blog/java/define-validator-in-model-struts2/"/>
     <updated>2014-06-28T04:16:20+09:00</updated>
     <id>http://ayanami.github.io/blog/java/define-validator-in-model-struts2</id>
-    <content type="html"><![CDATA[<p><code>Struts2</code>で<code>Action</code>ではなく、<code>Model</code>でValidatorを定義する方法。</p>
+    <content type="html"><![CDATA[<p><code>Struts2</code>でActionではなく、ModelでValidatorを定義する方法。</p>
 
-<p>まずは<code>Action</code>。
+<p>まずはAction。
 <code>com.opensymphony.xwork2.validator.annotations.VisitorFieldValidator</code>アノテーションを利用する。
 ```
 private HogeDto hogeDto;</p>
@@ -34,7 +34,7 @@ public void setHogeDto(HogeDto hogeDto) {</p>
 <p>}
 ```</p>
 
-<p>続いて、<code>Model</code>。
+<p>続いて、Model。
 ```
 private String foo;</p>
 
@@ -54,12 +54,12 @@ public void setFoo(String foo) {</p>
 <p>}
 ```</p>
 
-<p><code>message.properties</code>。
+<p>message.properties。
 <code>
 errors.required={0}は入力必須です。
 </code></p>
 
-<p>最後に<code>View</code>。<code>name</code>属性を<code>オブジェクト.プロパティ</code>の形式で定義する。
+<p>最後にView。<code>name</code>属性を<code>オブジェクト.プロパティ</code>の形式で定義する。
 <code>
 &lt;s:textfield name="hogeDto.foo" /&gt;
 </code></p>
