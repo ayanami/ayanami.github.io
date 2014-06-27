@@ -9,8 +9,13 @@
   <meta name="author" content="Yoshimasa.Suzuki">
 
   
-  <meta name="description" content="Velocityテンプレートエンジンで、Struts2のActionメソッドを指定する方法。 name属性をmethod:メソッド名の形式で定義する。 1
-&lt;input type="submit" name="method:add"　value="hoge"&gt; ">
+  <meta name="description" content="Struts2でActionではなく、ModelでValidatorを定義する方法。 まずはAction。
+com.opensymphony.xwork2.validator.annotations.VisitorFieldValidatorアノテーションを利用する。 1
+2
+3
+4
+5
+6 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +71,95 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/java/define-validator-in-model-struts2/">[Java]Struts2でValidatorをModelで定義する</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-28T04:16:20+09:00" pubdate data-updated="true">Jun 28<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>Struts2</code>で<code>Action</code>ではなく、<code>Model</code>でValidatorを定義する方法。</p>
+
+<p>まずは<code>Action</code>。
+<code>com.opensymphony.xwork2.validator.annotations.VisitorFieldValidator</code>アノテーションを利用する。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>private HogeDto hogeDto;
+</span><span class='line'>
+</span><span class='line'>@VisitorFieldValidator
+</span><span class='line'>public void setHogeDto(HogeDto hogeDto) {
+</span><span class='line'>    this.hogeDto = hogeDto;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>続いて、<code>Model</code>。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>private String foo;
+</span><span class='line'>
+</span><span class='line'>public String getFoo() {
+</span><span class='line'>    return this.foo;
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>@RequiredFieldValidator(key = "errors.required", messageParams = { "getText('foo')" })
+</span><span class='line'>public void setFoo(String foo) {
+</span><span class='line'>    this.foo = foo;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>message.properties</code>。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>errors.required={0}は入力必須です。</span></code></pre></td></tr></table></div></figure>
+
+
+<p>最後に<code>View</code>。<code>name</code>属性を<code>オブジェクト.プロパティ</code>の形式で定義する。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;s:textfield name="hogeDto.foo" /&gt;</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -757,60 +851,9 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/objective-c/is-numeric-objc/">[Objective-C]数値判定</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-28T20:42:38+09:00" pubdate data-updated="true">Mar 28<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Objective-Cでの数値判定方法はいくつかあるみたいだけど、<code>NSCharacterSet</code>を利用した方法が一番しっくりきた。
-<code>@"0123456789"</code>が、引数のスーパーセットかを判定した結果を返す。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>+ (BOOL)isNumeric:(NSString *)text {
-</span><span class='line'>    NSCharacterSet *numbers = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
-</span><span class='line'>    NSCharacterSet *target = [NSCharacterSet characterSetWithCharactersInString:text];
-</span><span class='line'>    return [numbers isSupersetOfSet:target];
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ちなみに、Javaでは<a href="http://ayanami.github.io/blog/java/is-numeric-java/">こんな感じ</a>。</p>
-
-<p>Objective-Cは好きだけど、Javaと比べるとメソッド名が長い。。。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -821,6 +864,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/java/define-validator-in-model-struts2/">[Java]Struts2でValidatorをModelで定義する</a>
+      </li>
     
       <li class="post">
         <a href="/blog/java/define-target-method-by-velocity/">[Java]Struts2 + Velocityで呼び出すメソッドを指定する</a>
@@ -838,15 +885,11 @@
         <a href="/blog/php/yii-widget-by-smarty/">[PHP]SmartyでYiiのWidgetを使う</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/octopress/octopress/">[Octopress]GitHubでブログを書く</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-  <ul id="category-list"><li><a href='/blog/categories/java/'>java (3)</a></li><li><a href='/blog/categories/objective-c/'>objective-c (3)</a></li><li><a href='/blog/categories/octopress/'>octopress (1)</a></li><li><a href='/blog/categories/passenger/'>passenger (1)</a></li><li><a href='/blog/categories/php/'>php (2)</a></li></ul>
+  <ul id="category-list"><li><a href='/blog/categories/java/'>java (4)</a></li><li><a href='/blog/categories/objective-c/'>objective-c (3)</a></li><li><a href='/blog/categories/octopress/'>octopress (1)</a></li><li><a href='/blog/categories/passenger/'>passenger (1)</a></li><li><a href='/blog/categories/php/'>php (2)</a></li></ul>
 </section>
 
 

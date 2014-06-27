@@ -4,7 +4,7 @@
   <title><![CDATA[NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-06-28T04:11:15+09:00</updated>
+  <updated>2014-06-28T04:34:20+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -12,6 +12,68 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[Java]Struts2でValidatorをModelで定義する]]></title>
+    <link href="http://ayanami.github.io/blog/java/define-validator-in-model-struts2/"/>
+    <updated>2014-06-28T04:16:20+09:00</updated>
+    <id>http://ayanami.github.io/blog/java/define-validator-in-model-struts2</id>
+    <content type="html"><![CDATA[<p><code>Struts2</code>で<code>Action</code>ではなく、<code>Model</code>でValidatorを定義する方法。</p>
+
+<p>まずは<code>Action</code>。
+<code>com.opensymphony.xwork2.validator.annotations.VisitorFieldValidator</code>アノテーションを利用する。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>private HogeDto hogeDto;
+</span><span class='line'>
+</span><span class='line'>@VisitorFieldValidator
+</span><span class='line'>public void setHogeDto(HogeDto hogeDto) {
+</span><span class='line'>    this.hogeDto = hogeDto;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>続いて、<code>Model</code>。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>private String foo;
+</span><span class='line'>
+</span><span class='line'>public String getFoo() {
+</span><span class='line'>    return this.foo;
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>@RequiredFieldValidator(key = "errors.required", messageParams = { "getText('foo')" })
+</span><span class='line'>public void setFoo(String foo) {
+</span><span class='line'>    this.foo = foo;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>message.properties</code>。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>errors.required={0}は入力必須です。</span></code></pre></td></tr></table></div></figure>
+
+
+<p>最後に<code>View</code>。<code>name</code>属性を<code>オブジェクト.プロパティ</code>の形式で定義する。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;s:textfield name="hogeDto.foo" /&gt;</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[Java]Struts2 + Velocityで呼び出すメソッドを指定する]]></title>

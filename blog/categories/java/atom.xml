@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Java | NO プログラム NO LIFE]]></title>
   <link href="http://ayanami.github.io/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://ayanami.github.io/"/>
-  <updated>2014-06-28T04:11:15+09:00</updated>
+  <updated>2014-06-28T04:34:20+09:00</updated>
   <id>http://ayanami.github.io/</id>
   <author>
     <name><![CDATA[Yoshimasa.Suzuki]]></name>
@@ -12,6 +12,59 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[Java]Struts2でValidatorをModelで定義する]]></title>
+    <link href="http://ayanami.github.io/blog/java/define-validator-in-model-struts2/"/>
+    <updated>2014-06-28T04:16:20+09:00</updated>
+    <id>http://ayanami.github.io/blog/java/define-validator-in-model-struts2</id>
+    <content type="html"><![CDATA[<p><code>Struts2</code>で<code>Action</code>ではなく、<code>Model</code>でValidatorを定義する方法。</p>
+
+<p>まずは<code>Action</code>。
+<code>com.opensymphony.xwork2.validator.annotations.VisitorFieldValidator</code>アノテーションを利用する。
+```
+private HogeDto hogeDto;</p>
+
+<p>@VisitorFieldValidator
+public void setHogeDto(HogeDto hogeDto) {</p>
+
+<pre><code>this.hogeDto = hogeDto;
+</code></pre>
+
+<p>}
+```</p>
+
+<p>続いて、<code>Model</code>。
+```
+private String foo;</p>
+
+<p>public String getFoo() {</p>
+
+<pre><code>return this.foo;
+</code></pre>
+
+<p>}</p>
+
+<p>@RequiredFieldValidator(key = &ldquo;errors.required&rdquo;, messageParams = { &ldquo;getText(&lsquo;foo&rsquo;)&rdquo; })
+public void setFoo(String foo) {</p>
+
+<pre><code>this.foo = foo;
+</code></pre>
+
+<p>}
+```</p>
+
+<p><code>message.properties</code>。
+<code>
+errors.required={0}は入力必須です。
+</code></p>
+
+<p>最後に<code>View</code>。<code>name</code>属性を<code>オブジェクト.プロパティ</code>の形式で定義する。
+<code>
+&lt;s:textfield name="hogeDto.foo" /&gt;
+</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[Java]Struts2 + Velocityで呼び出すメソッドを指定する]]></title>
